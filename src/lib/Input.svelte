@@ -1,4 +1,6 @@
 <script>
+  import Movie from "./Movie.svelte";
+
   let value = "";
   let loading = false;
   let response = [];
@@ -20,12 +22,12 @@
 
 {#if loading}
   <strong>loading...</strong>
-{:else} 
-    {#if response.length > 0}
-        <strong>We found {response.length} movies</strong>
-    {:else}
-        <strong>We not found results</strong>
-    {/if}
+{:else}
+  {#each response as { Title, Poster, Year }}
+    <Movie title={Title} poster={Poster} year={Year} />
+  {:else}
+    <strong>We not found results</strong>
+  {/each}
 {/if}
 
 <style>
