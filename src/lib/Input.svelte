@@ -2,33 +2,42 @@
   import Movie from "./Movie.svelte";
 
   let value = "";
-  let loading = false;
   let response = [];
 
   const handleInput = (event) => (value = event.target.value);
 
   $: if (value.length > 2) {
-    loading = true;
     fetch(`http://www.omdbapi.com/?s=${value}&apikey=bc2125e`)
       .then((res) => res.json())
       .then((apiResponse) => {
         response = apiResponse.Search || [];
-        loading = false;
       });
+  } else {
+    response = [];
   }
 </script>
 
 <input placeholder="Search movies..." {value} on:input={handleInput} />
 
-{#if loading}
+{#await response}
   <strong>loading...</strong>
-{:else}
-  {#each response as { Title, Poster, Year }}
-    <Movie title={Title} poster={Poster} year={Year} />
+{:then}
+  {#each response as { Title, Poster, Year, Genre }}
+    <Movie title={Title} poster={Poster} year={Year} genre={Genre} />
   {:else}
     <strong>We not found results</strong>
   {/each}
-{/if}
+{/await}
 
 <style>
+  input{
+    width: 100%;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 2rem;
+    background: antiquewhite;
+    color: black;
+    text-transform: uppercase;
+  }
+  
 </style>

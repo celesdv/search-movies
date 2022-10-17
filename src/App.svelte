@@ -9,7 +9,7 @@
 </script>
 
 <main>
-  <h1>Movie Search</h1>
+  <h1>Search movies 🍿</h1>
   <h2>Hello {name}!!</h2>
   <Input />
 </main>
@@ -22,6 +22,11 @@
     margin: 0 auto;
   }
 
+  h1{
+    text-transform: uppercase;
+    font-weight: 100;
+    margin-left: 4rem;
+  }
   @media (min-width: 640px) {
     main {
       max-width: none;

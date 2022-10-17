@@ -1,12 +1,25 @@
 <script>
-  export let title, poster, year;
+  export let title, poster, year, genre;
 </script>
 
 <article>
-  <img src={poster} alt={title} />
   <h3>{title}</h3>
-  <span>{year}</span>
-  {#if 2020 - year < 5}
-    <i>New!</i>
-  {/if}
+  <img src={poster} alt={title} /> 
+  <p>
+    <span>Year: {year} </span>
+    {#if 2020 - year < 5}
+      <i>New! ✨ </i>
+    {/if}
+    <span>- Genre: {genre}</span>
+  </p> 
 </article>
+
+<style>
+  article {
+    width: 100%;
+    padding: 1rem;
+    margin: 2rem;
+  }
+
+
+</style>
