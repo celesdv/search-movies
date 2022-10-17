@@ -14,7 +14,7 @@
       });
   } else {
     response = [];
-  }
+  }  
 </script>
 
 <input placeholder="Search movies..." {value} on:input={handleInput} />
@@ -22,10 +22,10 @@
 {#await response}
   <strong>loading...</strong>
 {:then}
-  {#each response as { Title, Poster, Year, Genre }}
-    <Movie title={Title} poster={Poster} year={Year} genre={Genre} />
+  {#each response as { Title, Poster, Year, Type}}
+    <Movie title={Title} poster={Poster} year={Year} type={Type} />
   {:else}
-    <strong>We not found results</strong>
+    <span>We not found results</span>
   {/each}
 {/await}
 
@@ -35,9 +35,12 @@
     padding: 1rem;
     border-radius: 5px;
     margin: 2rem;
-    background: antiquewhite;
-    color: black;
+    color: #d28312;
     text-transform: uppercase;
   }
   
+  span {
+    text-transform: uppercase;
+    color: #d28312;
+  }
 </style>

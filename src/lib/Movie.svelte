@@ -1,5 +1,5 @@
 <script>
-  export let title, poster, year, genre;
+  export let title, poster, year, type;
 </script>
 
 <article>
@@ -10,7 +10,9 @@
     {#if 2020 - year < 5}
       <i>New! ✨ </i>
     {/if}
-    <span>- Genre: {genre}</span>
+    <span>
+     {type} 
+    </span>
   </p> 
 </article>
 
@@ -20,6 +22,4 @@
     padding: 1rem;
     margin: 2rem;
   }
-
-
 </style>
